@@ -1,4 +1,7 @@
 import { motion } from 'framer-motion';
+import { CodeCard, GradientShape } from '../components/Decorative';
+import { CornerBracket, Crosshair, SystemLabel } from '../components/Technical';
+import GlitchText from '../components/GlitchText';
 
 const Hero = () => {
     return (
@@ -7,7 +10,22 @@ const Hero = () => {
             {/* Subtle Grid Background */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto w-full z-10 grid md:grid-cols-2 gap-12 items-center">
+            {/* Precision UI Markers */}
+            <CornerBracket position="top-left" className="top-8 left-8 hidden md:block" />
+            <CornerBracket position="bottom-right" className="bottom-8 right-8 hidden md:block" />
+            <Crosshair className="absolute top-20 right-12 hidden md:block" />
+            <Crosshair className="absolute bottom-20 left-12 hidden md:block" />
+
+            <div className="absolute top-12 left-1/2 -translate-x-1/2">
+                <SystemLabel>SYS.INIT_SEQUENCE_V2</SystemLabel>
+            </div>
+
+            {/* Decorative Gradient Shapes */}
+            <GradientShape className="top-20 right-0 w-96 h-96 bg-accent/10 rounded-full" />
+            <GradientShape className="bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full" delay={0.5} />
+
+
+            <div className="max-w-7xl mx-auto w-full z-10 grid md:grid-cols-2 gap-12 items-center relative">
 
                 {/* Left Column: Typography */}
                 <div>
@@ -26,7 +44,7 @@ const Hero = () => {
 
                         <h1 className="text-[13vw] md:text-8xl font-display font-medium tracking-tight leading-[0.9] md:leading-[1.1] mb-8 text-white">
                             Building <br />
-                            <span className="text-white/50">Intelligent</span> <br />
+                            <span className="text-white/50"><GlitchText text="Intelligent" /></span> <br />
                             Systems
                         </h1>
                     </motion.div>
@@ -46,9 +64,10 @@ const Hero = () => {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
-                    className="md:pl-0"
+                    className="md:pl-0 relative"
                 >
-                    <div className="relative">
+                    <CodeCard />
+                    <div className="relative z-10">
                         <div className="text-secondary/80 text-lg leading-relaxed space-y-6">
                             <p>
                                 <span className="text-2xl md:text-3xl font-display font-medium block mb-4 text-white">I am Deepak Paragi</span>
