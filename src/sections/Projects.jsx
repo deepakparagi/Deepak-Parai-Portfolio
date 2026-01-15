@@ -8,25 +8,25 @@ import PropTypes from 'prop-types';
 const projects = [
     {
         id: "01",
-        title: "Music Streaming App",
-        category: "Full Stack Engineering",
-        tags: ["Java", "MongoDB", "JS", "Apache", "REST API"],
-        link: "https://github.com/deepakparagi"
-    },
-    {
-        id: "02",
         title: "AI Fitness Coach",
         category: "Artificial Intelligence",
         tags: ["Next.js", "OpenAI", "Tailwind CSS"],
         link: "https://ai-fitness-coach-git-main-deepaks-projects-f551996f.vercel.app/"
     },
     {
-        id: "03",
-        title: "Bipin Chikkatti School",
-        category: "Web Development",
-        tags: ["HTML", "CSS", "JS", "Vercel"],
-        link: "https://deepakparagi.github.io/bipin-chikkatti-school/"
+        id: "02",
+        title: "Witnest Joke Generator",
+        category: "Web Application",
+        tags: ["React", "API Integration", "Vercel"],
+        link: "https://witnest-joke-generator.vercel.app/"
     },
+    {
+        id: "03",
+        title: "Signify Studio",
+        category: "Frontend Development",
+        tags: ["React", "Tailwind CSS", "UI/UX"],
+        link: "https://signify-studio-wine.vercel.app/"
+    }
 ];
 
 const ProjectItem = ({ project, index }) => {
@@ -35,33 +35,36 @@ const ProjectItem = ({ project, index }) => {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group block py-12 md:py-20 border-b border-white/10 cursor-pointer relative z-20"
+            className="group block py-12 md:py-20 border-b border-white/10 relative z-20 overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: index * 0.1, duration: 0.8, ease: "easeOut" }}
         >
-            <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-8">
+            <div className="group-hover:bg-white/[0.02] absolute inset-0 transition-colors duration-500" />
 
-                {/* Left: ID & Title */}
-                <div className="md:w-3/5">
-                    <div className="flex items-baseline gap-4 md:gap-8 mb-4">
-                        <span className="font-mono text-accent text-sm md:text-base">
-                            {project.id}
-                        </span>
-                        <h3 className="text-3xl md:text-6xl font-display font-medium text-white group-hover:text-white/80 transition-colors duration-300">
-                            {project.title}
-                        </h3>
-                    </div>
-                    <div className="md:pl-[calc(2rem+32px)]"> {/* Indent to align with title start approximately */}
-                        <p className="text-secondary/70 text-lg font-light mb-6">
+            <div className="relative z-10 flex flex-col md:grid md:grid-cols-12 gap-8 md:gap-12 items-start py-4 px-4 md:px-0">
+
+                {/* ID */}
+                <span className="md:col-span-1 font-mono text-accent text-sm md:text-base pt-2">
+                    {project.id}
+                </span>
+
+                {/* Main Content */}
+                <div className="md:col-span-10 flex flex-col gap-6">
+                    <h3 className="text-3xl md:text-6xl font-display font-medium text-white group-hover:text-emerald-400 transition-colors duration-300">
+                        {project.title}
+                    </h3>
+
+                    <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 border-l-2 border-white/10 pl-4 md:border-0 md:pl-0">
+                        <p className="text-secondary/70 text-lg font-light shrink-0">
                             {project.category}
                         </p>
-                        <div className="flex flex-wrap gap-x-4 gap-y-2">
+                        <div className="hidden md:block w-1 h-1 bg-white/20 rounded-full" />
+                        <div className="flex flex-wrap gap-3">
                             {project.tags.map((tag, i) => (
-                                <span key={i} className="text-xs font-mono text-secondary/50 uppercase tracking-wider">
+                                <span key={i} className="px-2 py-1 bg-white/5 rounded text-xs font-mono text-secondary/70 group-hover:text-white transition-colors">
                                     {tag}
-                                    {i !== project.tags.length - 1 && <span className="ml-4 text-secondary/20">/</span>}
                                 </span>
                             ))}
                         </div>
@@ -69,10 +72,13 @@ const ProjectItem = ({ project, index }) => {
                 </div>
 
                 {/* Right: Action Icon */}
-                <div className="md:w-1/5 flex justify-end items-start pt-2">
-                    <div className="p-4 rounded-full border border-white/5 bg-white/[0.02] group-hover:bg-white group-hover:text-black transition-all duration-500">
-                        <ArrowUpRight size={24} />
-                    </div>
+                <div className="md:col-span-1 flex justify-end items-start pt-2">
+                    <motion.div
+                        className="p-3 rounded-full border border-white/10 text-white/50 group-hover:text-white group-hover:border-emerald-500/50 transition-colors duration-300"
+                        whileHover={{ scale: 1.1 }}
+                    >
+                        <ArrowUpRight size={20} />
+                    </motion.div>
                 </div>
 
             </div>

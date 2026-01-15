@@ -8,10 +8,7 @@ const GlitchText = ({ text, className = "" }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
-        if (!isHovered) {
-            setDisplayText(text);
-            return;
-        }
+        if (!isHovered) return;
 
         let iterations = 0;
         const interval = setInterval(() => {
@@ -41,7 +38,10 @@ const GlitchText = ({ text, className = "" }) => {
         <span
             className={`inline-block truncate ${className}`}
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseLeave={() => {
+                setIsHovered(false);
+                setDisplayText(text);
+            }}
         >
             {displayText}
         </span>

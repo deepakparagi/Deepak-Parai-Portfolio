@@ -1,16 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { motion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
 import { NeuralLines } from './Decorative';
 
 const FloatingParticles = () => {
     // Generate random particles
-    const particles = Array.from({ length: 20 }).map((_, i) => ({
+    const particles = useMemo(() => Array.from({ length: 20 }).map((_, i) => ({
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
         duration: 15 + Math.random() * 20,
         delay: Math.random() * 5
-    }));
+    })), []);
 
     return (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
