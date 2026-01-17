@@ -50,7 +50,6 @@ const Hero = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.6, duration: 1 }}
-                    transition={{ delay: 0.6, duration: 1 }}
                     className="relative block max-w-sm md:max-w-md mx-auto md:ml-auto mt-12 md:mt-0"
                 >
                     {/* Placeholder for Profile Image or Minimal Graphic */}
