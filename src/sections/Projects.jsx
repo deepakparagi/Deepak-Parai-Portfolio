@@ -2,7 +2,9 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight, Github } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import PropTypes from 'prop-types';
-import projectPlaceholder from '../assets/project_placeholder.png'; // Import placeholder
+import aiFitnessImg from '../assets/ai_fitness_coach.png';
+import witnestImg from '../assets/witnest_joke_generator.png';
+import signifyImg from '../assets/signify_studio.png';
 
 const projects = [
     {
@@ -11,7 +13,8 @@ const projects = [
         category: "Artificial Intelligence",
         description: "A personalized workout planner powered by OpenAI, generating custom routines based on user goals and equipment availability.",
         tags: ["Next.js", "OpenAI", "Tailwind CSS"],
-        link: "https://ai-fitness-coach-git-main-deepaks-projects-f551996f.vercel.app/"
+        link: "https://ai-fitness-coach-git-main-deepaks-projects-f551996f.vercel.app/",
+        image: aiFitnessImg
     },
     {
         id: "02",
@@ -19,7 +22,8 @@ const projects = [
         category: "Web Application",
         description: "An interactive entertainment platform fetching dynamic content via external APIs with a focus on clean UI.",
         tags: ["React", "API Integration", "Vercel"],
-        link: "https://witnest-joke-generator.vercel.app/"
+        link: "https://witnest-joke-generator.vercel.app/",
+        image: witnestImg
     },
     {
         id: "03",
@@ -27,7 +31,8 @@ const projects = [
         category: "Frontend Development",
         description: "A premium landing page template for creative agencies, featuring smooth scroll animations and responsive layout.",
         tags: ["React", "Tailwind CSS", "UI/UX"],
-        link: "https://signify-studio-wine.vercel.app/"
+        link: "https://signify-studio-wine.vercel.app/",
+        image: signifyImg
     }
 ];
 
@@ -74,7 +79,7 @@ const ProjectItem = ({ project, index }) => {
                     <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500 z-20 pointer-events-none mix-blend-multiply" />
 
                     <img
-                        src={projectPlaceholder}
+                        src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-in-out"
                     />
@@ -96,7 +101,9 @@ ProjectItem.propTypes = {
         category: PropTypes.string,
         description: PropTypes.string,
         tags: PropTypes.arrayOf(PropTypes.string),
-        link: PropTypes.string
+
+        link: PropTypes.string,
+        image: PropTypes.string
     }).isRequired,
     index: PropTypes.number.isRequired
 };

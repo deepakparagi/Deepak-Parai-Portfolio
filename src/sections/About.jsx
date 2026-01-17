@@ -11,8 +11,8 @@ const About = () => {
                     <ScrollReveal width="100%">
                         <h2 className="text-sm font-medium text-secondary mb-4 uppercase tracking-wider">02 / About</h2>
                         <h3 className="text-3xl md:text-5xl font-display font-semibold text-primary max-w-3xl leading-tight">
-                            Engineered for impact. <br />
-                            <span className="text-secondary font-normal">Building software that matters.</span>
+                            Engineered for impact. <br className="hidden md:block" />
+                            <span className="text-secondary font-normal block mt-2 md:mt-0">Building software that matters.</span>
                         </h3>
 
                         <div className="mt-12 grid md:grid-cols-12 gap-12">

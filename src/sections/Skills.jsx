@@ -10,7 +10,7 @@ const skills = [
 
 const Skills = () => {
     return (
-        <section className="py-32 px-6 md:px-12 bg-background relative overflow-hidden">
+        <section className="py-20 md:py-32 px-4 md:px-12 bg-background relative overflow-hidden">
             <div className="max-w-screen-2xl mx-auto w-full relative z-10">
                 <ScrollReveal width="100%">
                     <div className="mb-16">
@@ -18,7 +18,7 @@ const Skills = () => {
                     </div>
                 </ScrollReveal>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                     {skills.map((skillGroup, index) => (
                         <ScrollReveal key={index} delay={index * 0.1} width="100%">
                             <div className="group h-full p-8 rounded-2xl bg-surface border border-primary/5 hover:border-primary/10 transition-colors duration-300 relative overflow-hidden">

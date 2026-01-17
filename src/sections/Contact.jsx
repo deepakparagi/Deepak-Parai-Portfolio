@@ -59,9 +59,9 @@ const CopyEmail = () => {
 
 const Contact = () => {
     return (
-        <section id="contact" className="min-h-screen flex items-center py-24 px-6 md:px-12 bg-surface relative overflow-hidden">
+        <section id="contact" className="min-h-screen flex items-center py-16 md:py-24 px-6 md:px-12 bg-surface relative overflow-hidden">
 
-            <div className="max-w-screen-2xl mx-auto w-full z-10 grid md:grid-cols-2 gap-16 md:gap-32 items-end">
+            <div className="max-w-screen-2xl mx-auto w-full z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-32 items-end">
 
                 {/* Left Column: Headline */}
                 <div className="space-y-12">
@@ -99,9 +99,8 @@ const Contact = () => {
                             </div>
                             <ContactItem
                                 icon={FileText}
-                                value="Download CV"
+                                value="View Resume"
                                 href="Deepak_Paragi_Resume.pdf"
-                                download={true}
                             />
                             <ContactItem
                                 icon={Github}
