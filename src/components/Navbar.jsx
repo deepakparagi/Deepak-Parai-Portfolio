@@ -30,7 +30,12 @@ const Navbar = () => {
 
     const NavItem = ({ name, id }) => (
         <Magnetic>
-            <button key={name} onClick={() => handleScroll(id)} className="relative group p-2 flex items-center gap-2 bg-transparent border-none cursor-pointer text-inherit font-inherit">
+            <button
+                key={name}
+                onClick={() => handleScroll(id)}
+                className="relative group p-2 flex items-center gap-2 bg-transparent border-none cursor-pointer text-inherit font-inherit"
+                aria-label={`Navigate to ${name} section`}
+            >
                 {name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </button>
@@ -66,7 +71,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="fixed top-0 left-0 right-0 px-6 py-4 md:px-12 md:py-5 flex justify-between items-center z-50 text-primary pointer-events-none">
+        <nav className="fixed top-0 left-0 right-0 px-6 py-4 md:px-12 md:py-5 flex justify-between items-center z-50 text-primary pointer-events-none" role="navigation" aria-label="Main navigation">
             {/* Background Blur only when menu is closed or on desktop */}
             <div className={`absolute inset-0 bg-background/80 backdrop-blur-md border-b border-primary/5 transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
 
@@ -92,7 +97,12 @@ const Navbar = () => {
             {/* Mobile Hamburger */}
             <div className="md:hidden pointer-events-auto relative z-50 flex items-center gap-4">
                 <ThemeToggle />
-                <button onClick={toggleMenu} className="p-2 text-primary hover:text-accent transition-colors">
+                <button
+                    onClick={toggleMenu}
+                    className="p-2 text-primary hover:text-accent transition-colors"
+                    aria-label={isOpen ? "Close menu" : "Open menu"}
+                    aria-expanded={isOpen}
+                >
                     {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
@@ -120,6 +130,7 @@ const Navbar = () => {
                                         <button
                                             onClick={() => handleScroll(item.toLowerCase())}
                                             className="text-5xl font-display font-medium text-primary hover:text-accent transition-colors bg-transparent border-none cursor-pointer"
+                                            aria-label={`Navigate to ${item === 'Projects' ? 'Work' : item} section`}
                                         >
                                             {item === 'Projects' ? 'Work' : item}
                                         </button>

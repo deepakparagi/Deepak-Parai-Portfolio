@@ -7,6 +7,7 @@ import ProjectDetails from './pages/ProjectDetails';
 
 import GridBackground from './components/GridBackground';
 import Loader from './components/Loader';
+import ScrollProgress from './components/ScrollProgress';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -42,6 +43,7 @@ function App() {
       </AnimatePresence>
 
       <main className="text-primary min-h-screen selection:bg-black selection:text-white overflow-hidden relative">
+        <ScrollProgress />
         <GridBackground />
 
         <div className="relative z-10">

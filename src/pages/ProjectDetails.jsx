@@ -1,70 +1,20 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Github, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Calendar, Code2 } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-// This would typically come from a shared data file or API
-const projectsData = {
-    "01": {
-        title: "Bipin Chikkatti School",
-        category: "Web Development",
-        period: "2024",
-        overview: "Designed and developed the official website for Bipin Chikkatti School, Gadag. The platform features sections for academics, admissions, faculty, and facilities, serving as a comprehensive digital hub for the school community.",
-        challenge: "The school required a modern, mobile-friendly platform to replace outdated communication methods and provide easy access to information for parents and prospective students.",
-        solution: "Developed a high-performance, responsive React application with Tailwind CSS. Focused on accessibility, clear navigation, and a professional design language that reflects the school's values.",
-        stack: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
-        links: {
-            live: "https://www.chikkattieducation.co.in/",
-            github: "https://github.com/deepakparagi/bipin-chikkatti-school"
-        }
-    },
-    "02": {
-        title: "AI Fitness Coach",
-        category: "Artificial Intelligence",
-        period: "2024",
-        overview: "A personalized workout planner powered by OpenAI that generates custom routines based on user goals and equipment availability.",
-        challenge: "Users often struggle to create effective workout plans that match their specific constraints (time, equipment, injuries). Generic apps lack personalization.",
-        solution: "Integrated GPT-4 to analyze user inputs and generate scientifically-backed workout splits. Implemented a drag-and-drop interface for users to tweak the generated plans.",
-        stack: ["React.js", "TailwindCSS", "OpenAI API"],
-        links: {
-            live: "https://ai-fitness-coach-git-main-deepaks-projects-f551996f.vercel.app/",
-            github: "https://github.com/deepakparagi"
-        }
-    },
-    "03": {
-        title: "Witnest Joke Generator",
-        category: "Web Application",
-        period: "2023",
-        overview: "An interactive entertainment platform fetching dynamic content via external APIs with a focus on clean UI.",
-        challenge: "Creating a seamless and engaging user experience for consuming dynamic content API responses.",
-        solution: "Built a reactive UI that fetches and displays jokes instantly, with social sharing capabilities and a minimalist design.",
-        stack: ["HTML5", "CSS3", "JavaScript"],
-        links: {
-            live: "https://witnest-joke-generator.vercel.app/",
-            github: "https://github.com/deepakparagi"
-        }
-    },
-    "04": {
-        title: "Signify Studio",
-        category: "Frontend Development",
-        period: "2023",
-        overview: "A premium landing page template for creative agencies, featuring smooth scroll animations and responsive layout.",
-        challenge: "Demonstrating high-end frontend capabilities with complex animations and layout requirements.",
-        solution: "Implemented ScrollReveal animations and a fluid responsive design that looks premium on all devices.",
-        stack: ["HTML5", "CSS3", "JavaScript"],
-        links: {
-            live: "https://signify-studio-wine.vercel.app/",
-            github: "https://github.com/deepakparagi"
-        }
-    }
-};
+import { getProjectById, projectsData } from '../data/projectsData';
 
 const ProjectDetails = () => {
     const { id } = useParams();
-    const project = projectsData[id] || projectsData["01"]; // Fallback for demo
+    const project = getProjectById(id) || projectsData[0]; // Fallback to first project
+
+    // Get related projects (same category, excluding current)
+    const relatedProjects = projectsData.filter(
+        p => p.category === project.category && p.id !== project.id
+    ).slice(0, 2);
 
     return (
         <div className="min-h-screen bg-background text-primary p-6 md:p-12">
-            <Link to="/" className="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors mb-12">
+            <Link to="/" className="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors mb-12" aria-label="Back to home">
                 <ArrowLeft size={20} />
                 <span>Back to Home</span>
             </Link>
@@ -75,40 +25,152 @@ const ProjectDetails = () => {
                 transition={{ duration: 0.5 }}
                 className="max-w-4xl mx-auto"
             >
+                {/* Hero Section */}
                 <div className="mb-12">
                     <span className="text-accent font-mono text-sm tracking-widest uppercase">{project.category}</span>
                     <h1 className="text-4xl md:text-6xl font-display font-medium mt-4 mb-6">{project.title}</h1>
-                    <div className="flex gap-4">
-                        <a href={project.links.live} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-2 bg-primary text-background rounded-full font-medium hover:opacity-90 transition-opacity">
+
+                    {/* Metadata */}
+                    <div className="flex flex-wrap gap-6 mb-8 text-secondary">
+                        <div className="flex items-center gap-2">
+                            <Calendar size={16} />
+                            <span className="text-sm">{project.period}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Code2 size={16} />
+                            <span className="text-sm">{project.metrics.technologies} Technologies</span>
+                        </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex flex-wrap gap-4">
+                        <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center gap-2 px-6 py-2 bg-primary text-background rounded-full font-medium hover:opacity-90 transition-opacity"
+                            aria-label={`View ${project.title} live demo`}
+                        >
                             View Live <ExternalLink size={16} />
                         </a>
-                        <a href={project.links.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-2 border border-primary/20 rounded-full font-medium hover:bg-surface transition-colors">
-                            GitHub <Github size={16} />
-                        </a>
+                        {project.github && (
+                            <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="flex items-center gap-2 px-6 py-2 border border-primary/20 rounded-full font-medium hover:bg-surface transition-colors"
+                                aria-label={`View ${project.title} on GitHub`}
+                            >
+                                GitHub <Github size={16} />
+                            </a>
+                        )}
                     </div>
                 </div>
 
+                {/* Project Image */}
+                <div className="mb-12 rounded-2xl overflow-hidden border border-primary/5 shadow-xl">
+                    <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-auto"
+                        loading="eager"
+                    />
+                </div>
+
+                {/* Content Grid */}
                 <div className="grid md:grid-cols-3 gap-12">
                     <div className="md:col-span-2 space-y-12">
+                        {/* Overview */}
+                        <section>
+                            <h2 className="text-2xl font-display mb-4">Overview</h2>
+                            <p className="text-secondary leading-relaxed">{project.overview}</p>
+                        </section>
+
+                        {/* Challenge */}
                         <section>
                             <h2 className="text-2xl font-display mb-4">The Challenge</h2>
                             <p className="text-secondary leading-relaxed">{project.challenge}</p>
                         </section>
+
+                        {/* Solution */}
                         <section>
                             <h2 className="text-2xl font-display mb-4">The Solution</h2>
                             <p className="text-secondary leading-relaxed">{project.solution}</p>
                         </section>
+
+                        {/* Lessons Learned */}
+                        {project.lessonsLearned && project.lessonsLearned.length > 0 && (
+                            <section>
+                                <h2 className="text-2xl font-display mb-4">Lessons Learned</h2>
+                                <ul className="space-y-3">
+                                    {project.lessonsLearned.map((lesson, index) => (
+                                        <li key={index} className="flex gap-3">
+                                            <span className="text-accent mt-1">→</span>
+                                            <span className="text-secondary leading-relaxed">{lesson}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                        )}
                     </div>
+
+                    {/* Sidebar */}
                     <div className="space-y-8">
                         <div>
                             <h3 className="text-sm font-medium uppercase tracking-widest text-secondary mb-4">Tech Stack</h3>
                             <div className="flex flex-wrap gap-2">
                                 {project.stack.map(tech => (
-                                    <span key={tech} className="px-3 py-1 bg-surface rounded-md text-sm border border-primary/5">{tech}</span>
+                                    <span key={tech} className="px-3 py-1 bg-surface rounded-md text-sm border border-primary/5">
+                                        {tech}
+                                    </span>
                                 ))}
                             </div>
                         </div>
+
+                        <div>
+                            <h3 className="text-sm font-medium uppercase tracking-widest text-secondary mb-4">Year</h3>
+                            <p className="text-lg">{project.metrics.year}</p>
+                        </div>
                     </div>
+                </div>
+
+                {/* Related Projects */}
+                {relatedProjects.length > 0 && (
+                    <section className="mt-20 pt-12 border-t border-primary/10">
+                        <h2 className="text-2xl font-display mb-8">Related Projects</h2>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            {relatedProjects.map(relProject => (
+                                <Link
+                                    key={relProject.id}
+                                    to={`/project/${relProject.id}`}
+                                    className="group block p-6 bg-surface rounded-xl border border-primary/5 hover:border-primary/20 transition-all duration-300 hover:-translate-y-1"
+                                >
+                                    <div className="aspect-video mb-4 rounded-lg overflow-hidden bg-background">
+                                        <img
+                                            src={relProject.image}
+                                            alt={relProject.title}
+                                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                    <h3 className="text-xl font-display mb-2 group-hover:text-accent transition-colors">
+                                        {relProject.title}
+                                    </h3>
+                                    <p className="text-secondary text-sm line-clamp-2">{relProject.description}</p>
+                                </Link>
+                            ))}
+                        </div>
+                    </section>
+                )}
+
+                {/* Back to Projects */}
+                <div className="mt-16 text-center">
+                    <Link
+                        to="/#projects"
+                        className="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors border-b border-secondary/20 hover:border-primary/30 pb-1"
+                    >
+                        ← View All Projects
+                    </Link>
                 </div>
             </motion.div>
         </div>
