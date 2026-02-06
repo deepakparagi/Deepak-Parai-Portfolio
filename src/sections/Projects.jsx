@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, Github } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import PropTypes from 'prop-types';
-import aiFitnessImg from '../assets/ai_fitness_coach.webp';
+import project2Fitai from '../assets/Screenshot (63).png';
 import witnestImg from '../assets/witnest_joke_generator.webp';
 import signifyImg from '../assets/signify_studio.webp';
 import bipinSchoolImg from '../assets/bipin_school_hero.png';
@@ -25,26 +25,9 @@ const projects = [
         description: "A personalized workout planner powered by OpenAI, generating custom routines based on user goals and equipment availability.",
         tags: ["React.js", "TailwindCSS", "OpenAI API"],
         link: "https://ai-fitness-coach-git-main-deepaks-projects-f551996f.vercel.app/",
-        image: aiFitnessImg
+        image: project2Fitai
     },
-    {
-        id: "03",
-        title: "Witnest Joke Generator",
-        category: "Web Application",
-        description: "An interactive entertainment platform fetching dynamic content via external APIs with a focus on clean UI.",
-        tags: ["HTML", "CSS", "JavaScript"],
-        link: "https://witnest-joke-generator.vercel.app/",
-        image: witnestImg
-    },
-    {
-        id: "04",
-        title: "Signify Studio",
-        category: "Frontend Development",
-        description: "A premium landing page template for creative agencies, featuring smooth scroll animations and responsive layout.",
-        tags: ["HTML", "CSS", "JavaScript"],
-        link: "https://signify-studio-wine.vercel.app/",
-        image: signifyImg
-    }
+
 ];
 
 const ProjectItem = ({ project, index }) => {
