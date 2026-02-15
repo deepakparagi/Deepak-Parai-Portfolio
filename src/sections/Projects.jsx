@@ -5,12 +5,12 @@ import { projectsData } from '../data/projectsData';
 
 const Projects = () => {
     return (
-        <section id="projects" className="relative py-32 flex flex-col justify-center overflow-hidden bg-background">
+        <section id="projects" className="relative py-16 md:py-32 flex flex-col justify-center overflow-hidden bg-background">
 
             <div className="relative z-10 px-6 md:px-12 max-w-screen-2xl mx-auto w-full">
 
                 {/* Header Section */}
-                <div className="mb-20 grid md:grid-cols-2 gap-12 items-end">
+                <div className="mb-12 md:mb-20 grid md:grid-cols-2 gap-12 items-end">
                     <ScrollReveal width="100%">
                         <h2 className="text-sm font-medium text-secondary mb-4 uppercase tracking-wider">01 / Selected Work</h2>
                         <h3 className="text-4xl md:text-5xl font-display font-semibold text-primary leading-tight">
@@ -35,7 +35,7 @@ const Projects = () => {
                     ))}
                 </div>
 
-                <div className="mt-24 text-center">
+                <div className="mt-12 md:mt-24 text-center">
                     <ScrollReveal delay={0.4} width="100%">
                         <a
                             href="https://github.com/deepakparagi"

@@ -2,12 +2,12 @@ import ScrollReveal from '../components/ScrollReveal';
 
 const About = () => {
     return (
-        <section id="about" className="min-h-screen py-32 px-6 md:px-12 relative overflow-hidden">
+        <section id="about" className="min-h-screen py-16 md:py-32 px-6 md:px-12 relative overflow-hidden">
 
             <div className="max-w-screen-2xl mx-auto w-full z-10 relative">
 
                 {/* header */}
-                <div className="mb-24">
+                <div className="mb-12 md:mb-24">
                     <ScrollReveal width="100%">
                         <h2 className="text-sm font-medium text-secondary mb-4 uppercase tracking-wider">02 / About</h2>
                         <h3 className="text-3xl md:text-5xl font-display font-semibold text-primary max-w-3xl leading-tight">

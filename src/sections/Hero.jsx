@@ -3,7 +3,7 @@ import profileImg from '../assets/profile_photo.webp';
 
 const Hero = () => {
     return (
-        <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 relative overflow-hidden pt-20">
+        <section className="min-h-[100dvh] flex flex-col justify-center px-6 md:px-12 relative overflow-hidden pt-20">
 
             <div className="max-w-screen-2xl mx-auto w-full z-10 grid md:grid-cols-[1.5fr_1fr] gap-12 items-center relative">
 

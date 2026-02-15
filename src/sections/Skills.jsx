@@ -10,10 +10,10 @@ const skills = [
 
 const Skills = () => {
     return (
-        <section className="py-20 md:py-32 px-4 md:px-12 bg-background relative overflow-hidden">
+        <section className="py-16 md:py-32 px-4 md:px-12 bg-background relative overflow-hidden">
             <div className="max-w-screen-2xl mx-auto w-full relative z-10">
                 <ScrollReveal width="100%">
-                    <div className="mb-16">
+                    <div className="mb-8 md:mb-16">
                         <h2 className="text-sm font-medium text-secondary mb-4 uppercase tracking-wider">03 / Proficiency</h2>
                     </div>
                 </ScrollReveal>

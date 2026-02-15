@@ -9,17 +9,17 @@ const ContactItem = ({ icon: Icon, value, href, download }) => (
         target={href.startsWith('mailto') ? '_self' : '_blank'}
         rel="noopener noreferrer"
         download={download}
-        className="group relative flex items-center justify-between p-6 bg-primary/5 rounded-2xl border border-primary/5 hover:border-primary/20 hover:bg-primary/10 transition-all duration-300"
+        className="group relative flex items-center justify-between p-4 md:p-6 bg-primary/5 rounded-2xl border border-primary/5 hover:border-primary/20 hover:bg-primary/10 transition-all duration-300"
     >
-        <div className="flex items-center gap-4">
-            <div className="p-3 bg-surface rounded-full border border-primary/5 group-hover:bg-primary/10 transition-colors">
+        <div className="flex items-center gap-4 flex-1 min-w-0">
+            <div className="p-3 bg-surface rounded-full border border-primary/5 group-hover:bg-primary/10 transition-colors shrink-0">
                 <Icon size={20} className="text-secondary group-hover:text-primary transition-colors" />
             </div>
-            <span className="text-lg md:text-xl font-display text-primary/80 group-hover:text-primary transition-colors">
+            <span className="text-sm xs:text-base md:text-xl font-display text-primary/80 group-hover:text-primary transition-colors break-all">
                 {value}
             </span>
         </div>
-        <ArrowUpRight className="text-secondary/50 group-hover:text-accent transform group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300" size={24} />
+        <ArrowUpRight className="text-secondary/50 group-hover:text-accent transform group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300 shrink-0 ml-4" size={24} />
     </a>
 );
 
@@ -52,7 +52,7 @@ const WhatsAppForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="p-8 bg-primary/5 rounded-3xl backdrop-blur-sm border border-primary/10 space-y-6 hover:border-primary/20 transition-all duration-500">
+        <form onSubmit={handleSubmit} className="p-6 md:p-8 bg-primary/5 rounded-3xl backdrop-blur-sm border border-primary/10 space-y-6 hover:border-primary/20 transition-all duration-500">
             <div className="space-y-4">
                 <h3 className="text-2xl font-display text-primary">Send a message</h3>
                 <p className="text-secondary/80 text-sm">Direct to WhatsApp</p>
@@ -101,17 +101,17 @@ const CopyEmail = () => {
     return (
         <div
             onClick={handleCopy}
-            className="group relative flex items-center justify-between p-6 bg-primary/5 rounded-2xl border border-primary/5 hover:border-primary/20 hover:bg-primary/10 transition-all duration-300 cursor-pointer"
+            className="group relative flex items-center justify-between p-4 md:p-6 bg-primary/5 rounded-2xl border border-primary/5 hover:border-primary/20 hover:bg-primary/10 transition-all duration-300 cursor-pointer"
         >
-            <div className="flex items-center gap-4">
-                <div className="p-3 bg-surface rounded-full border border-primary/5 group-hover:bg-primary/10 transition-colors">
+            <div className="flex items-center gap-4 flex-1 min-w-0">
+                <div className="p-3 bg-surface rounded-full border border-primary/5 group-hover:bg-primary/10 transition-colors shrink-0">
                     <Mail size={20} className="text-secondary group-hover:text-primary transition-colors" />
                 </div>
-                <span className="text-lg md:text-xl font-display text-primary/80 group-hover:text-primary transition-colors">
+                <span className="text-sm xs:text-base md:text-xl font-display text-primary/80 group-hover:text-primary transition-colors break-all">
                     {email}
                 </span>
             </div>
-            <button className="text-secondary/50 group-hover:text-accent transition-colors">
+            <button className="text-secondary/50 group-hover:text-accent transition-colors shrink-0 ml-4">
                 {copied ? <Check size={24} /> : <Copy size={24} />}
             </button>
         </div>
@@ -120,8 +120,8 @@ const CopyEmail = () => {
 
 const Contact = () => {
     return (
-        <section id="contact" className="min-h-screen flex flex-col justify-between py-16 md:py-24 px-6 md:px-12 bg-surface relative overflow-hidden">
-            <div className="max-w-screen-2xl mx-auto w-full z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-32 items-start mb-24">
+        <section id="contact" className="min-h-[100dvh] flex flex-col justify-start md:justify-between pt-16 md:pt-24 pb-16 md:py-24 px-6 md:px-12 bg-surface relative overflow-hidden">
+            <div className="max-w-screen-2xl mx-auto w-full z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-32 items-start mb-12 md:mb-24 flex-1">
 
                 {/* Left Column: Headline */}
                 <div className="space-y-12 lg:sticky lg:top-24">
@@ -190,13 +190,6 @@ const Contact = () => {
 
             </div>
 
-            {/* Footer */}
-            <ScrollReveal delay={0.5} width="100%">
-                <div className="max-w-screen-2xl mx-auto w-full pt-8 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center text-sm text-secondary/40 font-medium uppercase tracking-widest">
-                    <span>Deepak Paragi</span>
-                    <span>© 2026</span>
-                </div>
-            </ScrollReveal>
         </section>
     );
 };
