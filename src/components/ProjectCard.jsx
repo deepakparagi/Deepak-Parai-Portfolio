@@ -8,12 +8,19 @@ const ProjectCard = ({ project, index }) => {
     return (
         <motion.div
             className="group block w-full mb-12 last:mb-0 relative"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -12, scale: 1.02 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-            <div className="bg-surface rounded-3xl border border-primary/5 p-8 md:p-12 flex flex-col md:flex-row gap-8 md:gap-16 items-center transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 hover:border-primary/10 group-hover:-translate-y-2">
+            <div className="bg-surface rounded-3xl border border-primary/5 p-8 md:p-12 flex flex-col md:flex-row gap-8 md:gap-16 items-center transition-all duration-500 hover:border-primary/20 relative overflow-hidden">
+
+                {/* Glow Effect */}
+                <motion.div
+                    className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{ filter: 'blur(20px)' }}
+                />
 
                 {/* Left: Content */}
                 <div className="flex-1 flex flex-col gap-6 order-2 md:order-1 self-center">

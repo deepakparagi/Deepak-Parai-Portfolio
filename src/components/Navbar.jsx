@@ -37,7 +37,10 @@ const Navbar = () => {
                 aria-label={`Navigate to ${name} section`}
             >
                 {name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <motion.span
+                    className="absolute bottom-0 left-0 w-full h-0.5 bg-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
+                    layoutId="underline"
+                />
             </button>
         </Magnetic>
     );

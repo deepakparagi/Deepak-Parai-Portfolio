@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
-import { HashRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import ProjectDetails from './pages/ProjectDetails';
+import { HashRouter } from 'react-router-dom';
+import AnimatedRoutes from './components/AnimatedRoutes';
 
 import GridBackground from './components/GridBackground';
 import Loader from './components/Loader';
@@ -47,10 +46,9 @@ function App() {
         <GridBackground />
 
         <div className="relative z-10">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/project/:id" element={<ProjectDetails />} />
-          </Routes>
+          <div className="relative z-10">
+            <AnimatedRoutes />
+          </div>
         </div>
       </main>
     </HashRouter>

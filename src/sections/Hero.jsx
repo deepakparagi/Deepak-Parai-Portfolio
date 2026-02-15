@@ -1,18 +1,22 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import profileImg from '../assets/profile_photo.webp';
 
 const Hero = () => {
+    const { scrollY } = useScroll();
+    const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+    const y2 = useTransform(scrollY, [0, 500], [0, 100]);
+
     return (
         <section className="min-h-[100dvh] flex flex-col justify-center px-6 md:px-12 relative overflow-hidden pt-20">
 
             <div className="max-w-screen-2xl mx-auto w-full z-10 grid md:grid-cols-[1.5fr_1fr] gap-12 items-center relative">
 
                 {/* Left Column: Typography */}
-                <div>
+                <motion.div style={{ y: y2 }}>
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
                     >
                         <div className="flex items-center gap-3 mb-8">
                             <span className="relative flex h-2.5 w-2.5">
@@ -61,13 +65,14 @@ const Hero = () => {
                             </a>
                         </div>
                     </motion.div>
-                </div>
+                </motion.div>
 
                 {/* Right Column: Minimalist Visual (Optional, can be a profile shot or empty) */}
                 <motion.div
+                    style={{ y: y1 }}
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.6, duration: 1 }}
+                    transition={{ delay: 0.2, duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
                     className="relative block max-w-sm md:max-w-md mx-auto md:ml-auto mt-12 md:mt-0"
                 >
                     {/* Placeholder for Profile Image or Minimal Graphic */}
