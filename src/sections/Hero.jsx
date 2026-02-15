@@ -1,10 +1,23 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import profileImg from '../assets/profile_photo.webp';
 
 const Hero = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     const { scrollY } = useScroll();
-    const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-    const y2 = useTransform(scrollY, [0, 500], [0, 100]);
+    const scrollYAnimated = useTransform(scrollY, [0, 500], [0, 200]);
+    const scrollYAnimatedText = useTransform(scrollY, [0, 500], [0, 100]);
+
+    const y1 = isMobile ? 0 : scrollYAnimated;
+    const y2 = isMobile ? 0 : scrollYAnimatedText; // Optional: Keep text static too or let it move. User focused on image. Safer to disable both.
 
     return (
         <section className="min-h-[100dvh] flex flex-col justify-center px-6 md:px-12 relative overflow-hidden pt-20">
@@ -77,11 +90,11 @@ const Hero = () => {
                 >
                     {/* Placeholder for Profile Image or Minimal Graphic */}
                     {/* Profile Image */}
-                    <div className="aspect-[3/4] rounded-lg bg-surface border border-primary/5 overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700">
+                    <div className="md:aspect-[3/4] rounded-lg bg-surface border border-primary/5 overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700">
                         <img
                             src={profileImg}
                             alt="Deepak Paragi"
-                            className="w-full h-full object-cover object-center"
+                            className="w-full h-auto md:h-full object-cover md:object-[center_25%]"
                         />
                     </div>
                 </motion.div>
